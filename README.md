@@ -15,7 +15,9 @@ Now there are two input modes. Either you can use port pins as tri stated inputs
 * Example :
 
 to read data from port A.
+
 DDRA = 0x00;    //Set port a as input
+
 x = PINA;       //Read contents of port a 
 
 # PORTx register
@@ -24,20 +26,26 @@ PORTx is used for two purposes.
 1) To output data  :  when port is configured as output
 
 When you set bits in DDRx to 1, corresponding pins becomes output pins. Now you can write data into respective bits in PORTx register. This will immediately change state of output pins according to data you have written.
-Example :
+* Example :
 
 to output 0xFF data on port b
 DDRB = 0b11111111;        //set all pins of port b as outputs
+
 PORTB = 0xFF;             //write data on port 
 
 # DDRx register
 DDRx (Data Direction Register) configures data direction of port pins. Means its setting determines whether port pins will be used for input or output. Writing 0 to a bit in DDRx makes corresponding port pin as input, while writing 1 to a bit in DDRx makes corresponding port pin as output.
 
-Example:
+* Example:
 
 to make all pins of port A as input pins :
+
 DDRA = 0b00000000;
+
 to make all pins of port A as output pins :
+
 DDRA = 0b11111111;
+
 to make lower nibble of port B as output and higher nibble as input :
+
 DDRB = 0b00001111;

@@ -1,0 +1,20 @@
+/*
+ * Atmelstudio.c
+ *
+ * Created: 2/19/2021 4:24:52 PM
+ * Author : Sumit
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+	DDRB = 0xFF;
+    /* Replace with your application code */
+    while (1) 
+    {
+		PORTB = 0xAB;
+    }
+	return 0;
+}

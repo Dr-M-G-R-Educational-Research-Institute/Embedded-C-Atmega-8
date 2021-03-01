@@ -1,24 +1,24 @@
 /*
- * Hex_atmega8.c
+ * Input_atmega8.c
  *
- * Created: 2/19/2021 4:52:39 PM
- * Author : sumit
+ * Created: 2/20/2021 4:24:00 PM
+ * Author : Sumit
  */ 
+# ifndef F_CPU
+# define F_CPU 16000000UL
+# endif
 
 #include <avr/io.h>
 
 
 int main(void)
 {
+	DDRB = 0b00000000; // Input
+	DDRD = 0b11111111; // Output
     /* Replace with your application code */
-	DDRB = 0xFF;
-	DDRC = 0xFF;
-	DDRD = 0xFF;
     while (1) 
     {
-		PORTC = 0xAB;
-		PORTD = 0xBA;
-		PORTB = 0x0A;
+		PORTD = PINB;
     }
 }
 

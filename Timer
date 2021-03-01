@@ -1,0 +1,34 @@
+/*
+ * Timer.c
+ *
+ * Created: 2/24/2021 4:41:24 PM
+ * Author : sumit
+ */ 
+# ifndef F_CPU
+# define F_CPU 16000000UL
+# endif
+#include <avr/io.h>
+
+void timer();
+
+int main(void)
+{
+	DDRD = 0xFF;
+    /* Replace with your application code */
+    while (1) 
+    {
+		PORTD=0xAB;
+		timer();
+		PORTD=0x00;
+		timer();
+    }
+}
+
+void timer()
+{
+	TCNT0 = 0x20;
+	TCCR0 = 0x01;
+	while((TIFR&0x1)==0);
+	TCCR0 = 0x00;
+	TIFR = 0x1;
+}

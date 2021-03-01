@@ -1,0 +1,28 @@
+/*
+ * Interrupts_Exterrnal.c
+ *
+ * Created: 2/23/2021 4:46:30 PM
+ * Author : Sumit
+ */ 
+# ifndef F_CPU
+# define F_CPU 16000000UL
+# endif
+#include <avr/interrupt.h>
+#include <avr/io.h>
+
+
+int main(void)
+{
+	DDRC = 0b00001000;
+	PORTD = 0b00000100;
+	GICR = (1<<INT0);
+	sei();
+    /* Replace with your application code */
+    while (1) 
+    {
+    }
+}
+ISR (INT0_vect)
+{
+	PORTC ^= 0b00001000;
+}

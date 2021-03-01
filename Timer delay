@@ -1,0 +1,32 @@
+/*
+ * Timer_1_delay.c
+ *
+ * Created: 2/25/2021 4:50:05 PM
+ * Author : sumit
+ */ 
+# ifndef F_CPU
+# define F_CPU 16000000UL
+# endif 
+#include <avr/io.h>
+
+void timer1_delay();
+
+int main(void)
+{
+    /* Replace with your application code */
+	DDRB = 0xFF;
+    while (1) 
+    {
+		PORTB = PORTB ^ (1<<PB4);
+		timer1_delay();
+    }
+}
+void timer1_delay(){
+	TCNT1H = 0xC1;
+	TCNT1L = 0x80;
+	TCCR1A = 0x00;
+	TCCR1B = 0x01;
+	while((TIFR&(0x1<<TOV1))==0);
+	TCCR1B = 0;
+	TIFR = 0x1<<TOV1;
+}
